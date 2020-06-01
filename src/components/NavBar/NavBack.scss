@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+#nav-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  height: $nav-height-pc - 20px;
+  width: $nav-height-pc - 20px;
+  font-size: $nav-height-pc / 2;
+  cursor: pointer;
+
+  &.float-right {
+    float: right;
+  }
+
+  &.float-left {
+    float: left;
+  }
+
+  @media all and (max-width: $bp-tablet) {
+    height: $nav-height-tablet - 10px;
+    width: $nav-height-tablet - 10px;
+    margin: 5px;
+    font-size: $nav-height-tablet / 2;
+  }
+}

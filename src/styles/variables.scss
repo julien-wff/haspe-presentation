@@ -1,0 +1,19 @@
+// Colors
+$bg-color: #ffab00;
+$light-color: white;
+$dark-gray: #CCC;
+$theme-gradient: radial-gradient(circle at top left, #ffc400, $bg-color);
+
+// Breakpoints
+$bp-tablet: 769px;
+$bp-phone: 469px;
+
+// Nav bar
+$nav-height-pc: 80px;
+$nav-height-tablet: 60px;
+$nav-height-phone: 40px;
+$nav-bg: $light-color;
+
+// Borders radii
+$border-small: 10px;
+$border-big: 20px;

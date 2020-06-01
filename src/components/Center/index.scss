@@ -1,0 +1,48 @@
+@import "../../styles/variables";
+
+.vertical-align {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100vw;
+  height: 100vh;
+
+  &.with-nav {
+    @media all and (min-width: $bp-tablet) { // On PC
+      transform: translateY($nav-height-pc);
+      height: calc(100vh - #{$nav-height-pc});
+    }
+
+    @media all and (max-width: $bp-tablet) { // On tablet
+      height: calc(100vh - #{$nav-height-tablet});
+    }
+
+    @media all and (max-width: $bp-phone) { // On smartphone
+      height: calc(100vh - #{$nav-height-phone});
+    }
+  }
+}
+
+.horizontal-align {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &.flex-column {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &.spacing {
+    padding: 10px;
+  }
+}
+
+.vertical-align.with-nav .horizontal-align {
+  @media all and (max-width: $bp-tablet) { // On tablet
+    margin-bottom: $nav-height-tablet;
+  }
+
+  @media all and (max-width: $bp-phone) { // On smartphone
+    margin-bottom: $nav-height-phone;
+  }
+}

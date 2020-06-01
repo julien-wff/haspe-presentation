@@ -1,0 +1,57 @@
+@import "../../styles/variables";
+
+.nav-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: $nav-height-pc - 20px;
+  line-height: $nav-height-pc - 20px;
+  margin: 10px 15px;
+  font-size: 22px;
+  cursor: pointer;
+
+  & *, & *:link, & *:visited {
+    color: black;
+    text-decoration: none;
+  }
+
+  svg {
+    height: 22px;
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  &.float-right {
+    float: right;
+  }
+
+  &.float-left {
+    float: left;
+  }
+
+  @media all and (max-width: $bp-tablet) { // On tablet
+
+    & {
+      flex: 1;
+      justify-content: space-between;
+      height: $nav-height-tablet - 10px;
+      line-height: normal;
+      margin: 0;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    & > div, & > a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1;
+      height: $nav-height-tablet - 10px;
+      float: none;
+      font-size: 20px;
+      white-space: nowrap;
+      padding: 0 10px;
+    }
+  }
+}

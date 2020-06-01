@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+
+#step-indicator {
+  width: 700px;
+  height: 70px;
+  margin: auto 100px;
+
+  rect, circle {
+    fill: black;
+    transition: fill .3s;
+    cursor: not-allowed;
+
+    &.completed {
+      fill: $bg-color;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import "../../styles/variables";
+
+.radioLabel {
+  margin-right: 15px;
+  line-height: 60px;
+  display: inline-block;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+  background: #eee;
+}
+
+input:checked {
+  background-color: $bg-color;
+}
+
+.container:hover ~ input {
+  background-color: #ccc;
+}
+
+.container:hover ~ input:checked {
+  background-color: $bg-color;
+}

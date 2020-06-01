@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+#nav-icon {
+  display: inline-block;
+  margin: 10px;
+  height: $nav-height-pc - 20px;
+
+  &.float-right {
+    float: right;
+  }
+
+  &.float-left {
+    float: left;
+  }
+
+  & > img {
+    height: $nav-height-pc - 20px;
+  }
+
+  @media all and (max-width: $bp-tablet) {
+    height: $nav-height-tablet - 10px;
+    margin: 5px;
+
+    &:not(.mobile-visible) {
+      display: none;
+    }
+
+    & > img {
+      height: $nav-height-tablet - 10px;
+    }
+  }
+}

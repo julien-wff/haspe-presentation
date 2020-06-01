@@ -1,0 +1,52 @@
+@import "../styles/variables";
+
+#register-form {
+  width: 500px;
+  background: $light-color;
+  border-radius: $border-big;
+
+  @media all and (max-width: $bp-tablet) {
+    width: 400px;
+  }
+
+  @media all and (max-width: $bp-phone) {
+    width: 100%;
+  }
+
+  #title {
+    font-size: 25px;
+    text-align: center;
+    margin: 30px 0 15px;
+
+    @media all and (max-width: $bp-tablet) {
+      margin: 15px 0 0;
+    }
+  }
+
+  #tiles-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+    @media all and (max-width: $bp-tablet) {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+
+//@media all and (max-width: $bp-phone) {
+//  #register-form {
+//    margin-top: 50px;
+//    margin-bottom: 50px;
+//    width: 300px;
+//    height: 300px;
+//
+//    #title {
+//      margin-top: 15px;
+//      margin-bottom: 15px;
+//    }
+//  }
+//}

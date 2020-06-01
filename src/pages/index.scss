@@ -1,0 +1,100 @@
+@import "../styles/variables";
+
+#name-slogan {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    font-size: 100px;
+    margin: 0
+  }
+
+  p {
+    font-size: 20px;
+    margin: 0;
+  }
+}
+
+#arrow-presentation {
+  bottom: 50px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+
+  p {
+    font-size: 10px;
+  }
+
+  #arrow-circle-down {
+    color: white;
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    max-height: 16px;
+  }
+}
+
+@media all and (max-width: $bp-tablet) { // On tablet and smartphone
+  #arrow-presentation { // avoid collision with the nav bar
+    bottom: 100px;
+  }
+}
+
+@media all and (max-height: 500px) { // adapt the web site to technologie with less then 500px in height
+  #name-slogan {
+    h1 {
+      font-size: 70px;
+    }
+
+    p {
+      font-size: 15px;
+      margin: 0 0 100px;
+    }
+  }
+  #arrow-presentation {
+    position: static;
+    margin-bottom: 60px;
+  }
+}
+
+@media all and (max-height: 200px) {
+  #name-slogan {
+    h1 {
+      font-size: 50px;
+    }
+
+    p {
+      margin-bottom: 50px;
+    }
+  }
+  #arrow-presentation {
+    margin-bottom: 60px;
+  }
+}
+
+@media all and (max-width: 350px) {
+  #name-slogan {
+    h1 {
+      font-size: 70px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+  }
+}
+
+@media all and (max-width: 250px) {
+  #name-slogan {
+    h1 {
+      font-size: 50px;
+    }
+
+    p {
+      font-size: 10px;
+    }
+  }
+}

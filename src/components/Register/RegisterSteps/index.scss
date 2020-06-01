@@ -1,0 +1,26 @@
+@import "../../../styles/variables";
+
+#register-area {
+  width: 900px;
+  padding: 20px;
+  background: $light-color;
+  border-radius: $border-big;
+
+  #back-arrow {
+    position: absolute;
+    padding: 15px;
+    font-size: 40px;
+    line-height: 50px;
+    cursor: pointer;
+  }
+
+  #next-button {
+    display: block;
+    padding: 5px 40px;
+    background-color: $bg-color;
+    border: none;
+    border-radius: $border-small;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}

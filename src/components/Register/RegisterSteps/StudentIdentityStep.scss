@@ -1,0 +1,12 @@
+@import "../../../styles/variables";
+
+#register-area {
+
+  #student-identity-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-height: 350px;
+  }
+
+}

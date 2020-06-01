@@ -1,0 +1,92 @@
+@import "../../styles/variables";
+
+$tile-size-pc: 150px;
+$tile-size-tablet: 120px;
+$tile-size-phone: 100px;
+
+.register-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: $tile-size-pc;
+  height: $tile-size-pc;
+  margin: 30px;
+  background: $theme-gradient;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .3s;
+
+  &, &:link, &:visited {
+    color: black;
+    text-decoration: none;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media all and (max-width: $bp-tablet) {
+    height: $tile-size-tablet;
+    width: $tile-size-tablet;
+  }
+
+  @media all and (max-width: $bp-phone) {
+    height: $tile-size-phone;
+    width: $tile-size-phone;
+  }
+
+  .register-icon {
+    display: flex;
+    align-items: center;
+    height: $tile-size-pc / 2 - 10px;
+    margin-top: 10px;
+    font-size: 40px;
+
+    @media all and (max-width: $bp-tablet) {
+      height: $tile-size-tablet / 2 - 10px;
+      font-size: 30px;
+    }
+
+    @media all and (max-width: $bp-phone) {
+      height: $tile-size-phone / 2 - 5px;
+      margin-top: 5px;
+    }
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    height: $tile-size-pc / 2 - 10px;
+    margin: 0;
+
+    @media all and (max-width: $bp-tablet) {
+      height: $tile-size-tablet / 2 - 10px;
+      font-size: 20px;
+    }
+
+    @media all and (max-width: $bp-phone) {
+      height: $tile-size-phone / 2 - 5px;
+      font-size: 16px;
+    }
+  }
+}
+
+//@media all and (max-width: $bp-phone) {
+//  .register-tile {
+//    width: 125px;
+//    height: 125px;
+//
+//    h2 {
+//      font-size: 18px;
+//      margin-top: 15px;
+//      margin-bottom: 15px;
+//    }
+//
+//    &:hover {
+//      transform: scale(1.05);
+//    }
+//  }
+//}

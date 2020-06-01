@@ -1,0 +1,52 @@
+@import "../../styles/variables";
+
+// PC nav bar
+
+#navbar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background: $nav-bg;
+  z-index: 2;
+  height: $nav-height-pc;
+
+  #menu-bar { // Hidden on pc or tablet
+    display: none;
+  }
+
+  @media all and (min-width: $bp-tablet) { // On PC
+    top: 0;
+  }
+
+  @media all and (max-width: $bp-tablet) { // On tablet
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+    bottom: 0;
+    height: $nav-height-tablet;
+  }
+
+  @media all and (max-width: $bp-phone) { // On smartphone
+    flex-wrap: wrap;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+    bottom: 0;
+    top: calc(100vh - #{$nav-height-phone});
+    transition: .3s;
+
+    & #menu-bar {
+      display: block;
+      width: 100%;
+      height: $nav-height-phone;
+      line-height: $nav-height-phone;
+      text-align: center;
+      font-size: $nav-height-phone / 3 * 2;
+      cursor: pointer;
+
+      svg {
+        padding-right: 5px;
+      }
+    }
+  }
+}

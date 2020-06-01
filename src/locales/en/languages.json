@@ -1,0 +1,17 @@
+{
+    "languages": "Languages",
+    "available sentence": "Haspe is available in the following languages :",
+    "languages list": {
+        "fr": "French",
+        "en": "English",
+        "es": "Spanish",
+        "de": "German",
+        "pl": "Polish",
+        "ja": "Japanese",
+        "cmn": "Mandarin"
+    },
+    "lang not found": {
+        "not seen": "Don't see your language ?",
+        "ask": "Let us know."
+    }
+}
