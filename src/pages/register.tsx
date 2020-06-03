@@ -1,6 +1,6 @@
 import React from 'react';
 import Center from '../components/Center';
-import './register.scss';
+import styles from './register.module.scss';
 import '../styles/body.scss';
 import {
     faChalkboardTeacher,
@@ -30,9 +30,9 @@ function RegisterPage() {
             <RegisterNavBar />
 
             <Center>
-                <div id="register-form">
-                    <h1 id="title">{t('who are you')}</h1>
-                    <div id="tiles-container">
+                <div className={styles.form}>
+                    <h1>{t('who are you')}</h1>
+                    <div className={styles.tilesContainer}>
                         <SelectionTile
                             icon={faUserGraduate}
                             text={t('student')}

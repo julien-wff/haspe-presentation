@@ -1,5 +1,6 @@
+import classNames from 'classnames';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import './login.scss';
+import styles from './login.module.scss';
 import '../styles/body.scss';
 import InputField from '../components/Form/InputField';
 import { useTranslation } from 'react-i18next';
@@ -23,8 +24,8 @@ i18next.addResourceBundle('en', 'translation', enLoginPage);
 function LoginPage() {
     const { t } = useTranslation();
     const { lang } = usePageContext();
-    const [credentials, setCredentials] = useState({ email: '', password: '' });
-    const [langExpanded, setLangExpanded] = useState(false);
+    const [ credentials, setCredentials ] = useState({ email: '', password: '' });
+    const [ langExpanded, setLangExpanded ] = useState(false);
 
     function handleInputChange(evt: ChangeEvent<HTMLInputElement>) {
         const { value, attributes } = evt.target;
@@ -39,7 +40,7 @@ function LoginPage() {
 
     return (
         <>
-            <SEO title={t('sign in')} />
+            <SEO title={t('sign in')}/>
 
             <ChangeLanguage
                 expanded={langExpanded}
@@ -47,7 +48,7 @@ function LoginPage() {
             />
 
             <NavBar>
-                <NavIcon name="haspe" href="/" />
+                <NavIcon name="haspe" href="/"/>
                 <NavText
                     text={t('lang')}
                     icon={faFlag}
@@ -74,7 +75,7 @@ function LoginPage() {
             </NavBar>
 
             <Center>
-                <div id="login-form">
+                <div className={styles.form}>
                     <h1>{t('sign in')}</h1>
                     <form onSubmit={handleFormSubmit}>
                         <InputField
@@ -92,15 +93,16 @@ function LoginPage() {
                         />
                         <input
                             type="submit"
+                            className={styles.submitBtn}
                             value={t('login submit') as string}
                         />
                     </form>
                     <Link
-                        className="link padding-bottom-30px"
+                        className={classNames(styles.link, styles.paddingBottom30px)}
                         to={`/${lang}/forgotten-pass`}>
                         {t('forgotten password')}
                     </Link>
-                    <Link className="link" to={`/${lang}/register`}>
+                    <Link className={styles.link} to={`/${lang}/register`}>
                         {t('create account')}
                     </Link>
                 </div>

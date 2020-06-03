@@ -1,6 +1,6 @@
 @import "../styles/variables";
 
-#name-slogan {
+.slogan {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
   }
 }
 
-#arrow-presentation {
+.discover {
   bottom: 50px;
   position: absolute;
   width: 100%;
@@ -28,7 +28,7 @@
     font-size: 10px;
   }
 
-  #arrow-circle-down {
+  svg {
     color: white;
     font-size: 16px;
     height: 16px;
@@ -38,13 +38,13 @@
 }
 
 @media all and (max-width: $bp-tablet) { // On tablet and smartphone
-  #arrow-presentation { // avoid collision with the nav bar
+  .discover { // avoid collision with the nav bar
     bottom: 100px;
   }
 }
 
 @media all and (max-height: 500px) { // adapt the web site to technologie with less then 500px in height
-  #name-slogan {
+  .slogan {
     h1 {
       font-size: 70px;
     }
@@ -54,14 +54,14 @@
       margin: 0 0 100px;
     }
   }
-  #arrow-presentation {
+  .discover {
     position: static;
     margin-bottom: 60px;
   }
 }
 
 @media all and (max-height: 200px) {
-  #name-slogan {
+  .slogan {
     h1 {
       font-size: 50px;
     }
@@ -70,13 +70,14 @@
       margin-bottom: 50px;
     }
   }
-  #arrow-presentation {
+
+  .discover {
     margin-bottom: 60px;
   }
 }
 
 @media all and (max-width: 350px) {
-  #name-slogan {
+  .slogan {
     h1 {
       font-size: 70px;
     }
@@ -88,7 +89,7 @@
 }
 
 @media all and (max-width: 250px) {
-  #name-slogan {
+  .slogan {
     h1 {
       font-size: 50px;
     }

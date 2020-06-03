@@ -10,7 +10,7 @@ import {
     faSignInAlt,
     faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
-import './index.scss';
+import styles from './index.module.scss';
 import '../styles/body.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
@@ -64,11 +64,11 @@ function PresentationPage() {
                 />
             </NavBar>
 
-            <div id="name-slogan">
+            <div className={styles.slogan}>
                 <h1>HASPE</h1>
                 <p>Change Now</p>
             </div>
-            <div id="arrow-presentation">
+            <div className={styles.discover}>
                 <p>{t('discover')}</p>
                 <FontAwesomeIcon
                     id="arrow-circle-down"

@@ -1,6 +1,6 @@
 @import "../styles/variables";
 
-#login-form {
+.form {
   width: 300px;
   height: 500px;
   background: $light-color;
@@ -16,14 +16,16 @@
     padding-left: 10%;
   }
 
-  input[type="submit"] {
+  .submit-btn {
     display: block;
     border-radius: $border-small;
     border: none;
     background: $bg-color;
     width: 300px;
     margin-bottom: 40px;
+    padding: 8px;
     font-size: 20px;
+    line-height: 22px;
     cursor: pointer;
 
     @media all and (max-width: $bp-phone) { // On phone
