@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -6,7 +7,7 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
-import './NavBack.scss';
+import styles from './NavBack.module.scss';
 
 interface Props {
     iconStyle: 'arrow' | 'arrow-circle';
@@ -25,12 +26,19 @@ function NavBack({ iconStyle, float }: Props) {
             break;
     }
 
+    const cssClasses = classNames(
+        styles.navBack,
+        {
+            [styles.floatLeft]: float === 'left',
+            [styles.floatRight]: float === 'right',
+        },
+    );
+
     return (
         <div
-            id="nav-back"
-            className={`float-${float}`}
+            className={cssClasses}
             onClick={() => window.history.back()}>
-            <FontAwesomeIcon icon={icon} />
+            <FontAwesomeIcon icon={icon}/>
         </div>
     );
 }

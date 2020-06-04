@@ -4,7 +4,7 @@ $tile-size-pc: 150px;
 $tile-size-tablet: 120px;
 $tile-size-phone: 100px;
 
-.register-tile {
+.tile {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,7 @@ $tile-size-phone: 100px;
     width: $tile-size-phone;
   }
 
-  .register-icon {
+  .icon {
     display: flex;
     align-items: center;
     height: $tile-size-pc / 2 - 10px;
@@ -75,7 +75,7 @@ $tile-size-phone: 100px;
 }
 
 //@media all and (max-width: $bp-phone) {
-//  .register-tile {
+//  .tile {
 //    width: 125px;
 //    height: 125px;
 //

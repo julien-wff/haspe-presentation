@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import './index.scss';
+import styles from './index.module.scss';
 import classNames from 'classnames';
 
 interface Props {
@@ -10,20 +10,21 @@ interface Props {
     id?: string;
 }
 
-function Center({
-    children,
-    withoutNav = false,
-    noSpacing = false,
-    flexDirection = 'row',
-    id,
-}: Props) {
-    const verticalClasses = classNames('vertical-align', {
-        'with-nav': !withoutNav,
-    });
-    const horizontalClasses = classNames('horizontal-align', {
-        spacing: !noSpacing,
-        'flex-column': flexDirection === 'column',
-    });
+function Center({ children, withoutNav = false, noSpacing = false, flexDirection = 'row', id }: Props) {
+
+    const verticalClasses = classNames(
+        styles.verticalAlign,
+        {
+            [styles.withNav]: !withoutNav,
+        },
+    );
+    const horizontalClasses = classNames('' +
+        styles.horizontalAlign,
+        {
+            [styles.spacing]: !noSpacing,
+            [styles.flexColumn]: flexDirection === 'column',
+        },
+    );
 
     return (
         <div className={verticalClasses}>

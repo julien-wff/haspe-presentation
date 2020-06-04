@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-#change-language-container {
+.container {
   position: absolute;
   width: 100vw;
   min-height: 100vh;
@@ -16,7 +16,7 @@
     z-index: -1;
   }
 
-  #language-exit {
+  .exit-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +29,7 @@
     cursor: pointer;
   }
 
-  #languages-body {
+  .languages-body {
     margin: 50px 20%;
 
     @media all and (max-width: $bp-tablet) {
@@ -49,13 +49,14 @@
     font-weight: normal;
   }
 
-  #languages-container {
+  .languages-container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
 
   a, a:link, a:visited {
+    padding: 2px 5px;
     color: black;
     text-decoration: none;
     background: $theme-gradient;

@@ -5,12 +5,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import languages from '../../locales/languages';
-import './index.scss';
+import styles from './index.module.scss';
 import LanguageTile from './LanguageTile';
 import Center from '../Center';
 
 import enLanguages from '../../locales/en/languages.json';
 import frLanguages from '../../locales/fr/languages.json';
+
 i18next.addResourceBundle('en', 'translation', enLanguages);
 i18next.addResourceBundle('fr', 'translation', frLanguages);
 
@@ -22,9 +23,11 @@ interface Props {
 function ChangeLanguage({ expanded, setExpanded }: Props) {
     const { t, i18n } = useTranslation();
 
-    const cssClasses = classNames({
-        invisible: !expanded,
-    });
+    const cssClasses = classNames(
+        styles.container,
+        {
+            [styles.invisible]: !expanded,
+        });
 
     async function handleLanguageTileClick(code: string) {
         await i18n.changeLanguage(code);
@@ -32,17 +35,17 @@ function ChangeLanguage({ expanded, setExpanded }: Props) {
     }
 
     return (
-        <div id="change-language-container" className={cssClasses}>
+        <div className={cssClasses}>
             <Center noSpacing withoutNav>
                 <div
-                    id="language-exit"
+                    className={styles.exitBtn}
                     onClick={() => setExpanded(prevState => !prevState)}>
-                    <FontAwesomeIcon icon={faTimes} />
+                    <FontAwesomeIcon icon={faTimes}/>
                 </div>
-                <div id="languages-body">
+                <div className={styles.languagesBody}>
                     <h1>{t('languages')}</h1>
                     <h3>{t('available sentence')}</h3>
-                    <div id="languages-container">
+                    <div className={styles.languagesContainer}>
                         {languages.map(lang => (
                             <LanguageTile
                                 onClick={handleLanguageTileClick}

@@ -1,12 +1,12 @@
 @import "../../styles/variables";
 
-.radioLabel {
+.label {
   margin-right: 15px;
   line-height: 60px;
   display: inline-block;
 }
 
-input[type="radio"] {
+.input-radio {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

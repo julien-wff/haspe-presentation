@@ -1,5 +1,5 @@
-import React, { InputHTMLAttributes } from 'react';
-import './RadioButton.scss';
+import React, { InputHTMLAttributes, useState } from 'react';
+import styles from './RadioButton.module.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
@@ -11,12 +11,9 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 function RadioButton(props: Props) {
     // const [ inputValue, setInputValue ] = useState(props.value || '');
-    // const [ uuid ] = useState(Math.random().toString().slice(2, 7));
-    //
-    // let id = props.id || `radio-${uuid}`,
-    //     name = props.name || "radio";
+    const [ uuid ] = useState(Math.random().toString().slice(2, 7));
 
-    let id = props.id,
+    let id = props.id || `radio-${uuid}`,
         name = props.name;
 
     // function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -27,15 +24,15 @@ function RadioButton(props: Props) {
 
     return (
         <>
-            <div className="container">
+            <div className={styles.container}>
                 <input
-                    className="contactChoice"
                     name={name}
                     id={id}
+                    className={styles.inputRadio}
                     value={props.label}
                     type="radio"
                 />
-                <label className="radioLabel" htmlFor={id}>
+                <label className={styles.label} htmlFor={id}>
                     {props.label}
                 </label>
             </div>

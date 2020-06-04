@@ -12,8 +12,7 @@ import { bpPhone } from '../../styles/breakpoints';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-
-import './index.scss';
+import styles from './index.module.scss';
 
 import enHeader from '../../locales/en/header.json';
 import frHeader from '../../locales/fr/header.json';
@@ -26,8 +25,9 @@ interface Props {
 }
 
 function NavBar({ children }: Props) {
-    const [mobileDeployed, setMobileDeployed] = useState(false);
-    const [navHeight, setNavHeight] = useState(0);
+
+    const [ mobileDeployed, setMobileDeployed ] = useState(false);
+    const [ navHeight, setNavHeight ] = useState(0);
     const windowWidth = useWindowWidth();
 
     const navEl: MutableRefObject<HTMLDivElement> = useRef() as any;
@@ -38,14 +38,14 @@ function NavBar({ children }: Props) {
         // Set the navHeight var according to the nav element
         const navHeight = navEl.current.scrollHeight;
         setNavHeight(navHeight);
-    }, [windowWidth, navEl]);
+    }, [ windowWidth, navEl ]);
 
     useEffect(() => {
         // Remove the "deployed" style if the screen switch to tablet size
         if (windowWidth > bpPhone && mobileDeployed) {
             setMobileDeployed(false);
         }
-    }, [windowWidth, mobileDeployed]);
+    }, [ windowWidth, mobileDeployed ]);
 
     function handleNavClick(e: MouseEvent<HTMLDivElement>) {
         const target = e.target as HTMLDivElement;
@@ -62,10 +62,10 @@ function NavBar({ children }: Props) {
                 top: mobileDeployed ? `calc(100vh - ${navHeight}px)` : '',
             }}
             ref={navEl}
-            id="navbar"
+            className={styles.navbar}
             onClick={handleNavClick}>
-            <div id="menu-bar">
-                <FontAwesomeIcon icon={faBars} />
+            <div className={styles.menuBar}>
+                <FontAwesomeIcon icon={faBars}/>
                 {t('menu')}
             </div>
             {children}

@@ -1,6 +1,6 @@
 import React, { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import './languageTile.scss';
+import styles from './LanguageTile.module.scss';
 
 interface Props {
     onClick: (code: string, event: MouseEvent<HTMLDivElement>) => void;
@@ -16,7 +16,7 @@ function LanguageTile({ onClick, code, original }: Props) {
     }
 
     return (
-        <div onClick={handleTileClick} className="language-tile">
+        <div onClick={handleTileClick} className={styles.languageTile}>
             <h5>{t(`languages list.${code}`)}</h5>
             <h4>{original}</h4>
         </div>

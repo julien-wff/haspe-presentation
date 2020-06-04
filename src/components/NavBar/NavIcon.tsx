@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import './NavIcon.scss';
+import styles from './NavIcon.module.scss';
 
 import logoHaspe from '../../images/logo-haspe.png';
 
@@ -13,16 +13,18 @@ interface Props {
 
 function NavIcon({ name, mobileVisible = false, float = 'left', href }: Props) {
     const cssClasses = classNames(
+        styles.navIcon,
         {
-            'mobile-visible': mobileVisible,
+            [styles.mobileVisible]: mobileVisible,
+            [styles.floatRight]: float === 'right',
+            [styles.floatLeft]: float === 'left',
         },
-        `float-${float}`,
     );
 
     if (href)
         return (
-            <a href={href} id="nav-icon" className={cssClasses}>
-                <img src={logoHaspe} alt={`logo ${name}`} />
+            <a href={href} className={cssClasses}>
+                <img src={logoHaspe} alt={`logo ${name}`}/>
             </a>
         );
     else

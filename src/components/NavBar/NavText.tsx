@@ -4,20 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby';
 
-import './NavText.scss';
+import styles from './NavText.module.scss';
 
 interface Props {
     text: string;
     icon?: IconDefinition;
     options?:
         | {
-              type: 'link';
-              url: string;
-              linkType: 'router' | 'anchor';
-          }
+        type: 'link';
+        url: string;
+        linkType: 'router' | 'anchor';
+    }
         | {
-              type: 'menu';
-          };
+        type: 'menu';
+    };
     float?: 'right' | 'left';
     pcOnly?: boolean;
     onClick?: (event: MouseEvent<HTMLDivElement>) => void;
@@ -26,11 +26,16 @@ interface Props {
 //TODO: pcOnly
 
 function NavText({ text, icon, options, float = 'right', onClick }: Props) {
-    const cssClasses = classNames(['nav-text', `float-${float}`]);
+    const cssClasses = classNames(
+        styles.navText, {
+            [styles.floatLeft]: float === 'left',
+            [styles.floatRight]: float === 'right',
+        },
+    );
 
     let linkContent = (
         <>
-            {icon && <FontAwesomeIcon icon={icon} />}
+            {icon && <FontAwesomeIcon icon={icon}/>}
             {text}
         </>
     );
@@ -42,7 +47,7 @@ function NavText({ text, icon, options, float = 'right', onClick }: Props) {
             linkContent = <Link to={options.url}>{linkContent}</Link>;
         }
     } else {
-        linkContent = <div className="nav-menu">{linkContent}</div>;
+        linkContent = <div>{linkContent}</div>;
     }
 
     return (
