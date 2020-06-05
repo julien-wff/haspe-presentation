@@ -1,5 +1,5 @@
 import React, { FormEvent, useContext } from 'react';
-import './index.scss';
+import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
 import { navigate } from '@reach/router';
 import { StudentRegisterContext } from '../../../pages/register/student';
@@ -40,10 +40,10 @@ export default function RegisterSteps({ children: steps }: Props) {
 
     return (
         <Center>
-            <div id="register-area">
+            <div className={styles.registerArea}>
                 <FontAwesomeIcon
                     icon={faArrowLeft}
-                    id="back-arrow"
+                    className={styles.backArrow}
                     onClick={() => handleStepChange('decrease')}
                 />
 
@@ -51,7 +51,7 @@ export default function RegisterSteps({ children: steps }: Props) {
 
                 <form onSubmit={evt => handleStepChange('increase', evt)}>
                     {steps[stepIndex]}
-                    <button type="submit" id="next-button">
+                    <button type="submit" className={styles.nextButton}>
                         {t('next')}
                     </button>
                 </form>

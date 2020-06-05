@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { StudentRegisterContext } from '../../../pages/register/student';
-import './StudentGradeStep.scss';
+import styles from './StudentGradeStep.module.scss';
 import { useTranslation } from 'react-i18next';
 import RadioButton from '../../Form/RadioButton';
 
@@ -38,7 +38,7 @@ export default function StudentGradeStep() {
     return (
         <>
             <h1>{t('who are you')}</h1>
-            <div id="student-grade-inputs">
+            <div className={styles.studentGradeInputs}>
                 <div className="student-grade-choice">
                     <div className="button">
                         <RadioButton
@@ -51,10 +51,10 @@ export default function StudentGradeStep() {
                         <RadioButton label="High School" name="Level"/>
                         <RadioButton label="University" name="Level"/>
                     </div>
-                    <div className="vertical-line"/>
+                    <div className={styles.verticalLine}/>
                 </div>
                 <div className="student-grade-choice">
-                    <div className="button">
+                    <div className={styles.button}>
                         <RadioButton
                             label="Voie générale"
                             name="Voie"
@@ -73,10 +73,10 @@ export default function StudentGradeStep() {
                             onBlur={() => dispatchUserData({ type: 'WRITE_CHANGES' })}
                         />
                     </div>
-                    <div className="vertical-line"/>
+                    <div className={styles.verticalLine}/>
                 </div>
                 <div className="student-grade-choice">
-                    <div className="button">
+                    <div className={styles.button}>
                         <RadioButton
                             label="Seconde"
                             name="Class"

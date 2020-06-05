@@ -1,12 +1,12 @@
 @import "../../../styles/variables";
 
-#register-area {
+.register-area {
   width: 900px;
   padding: 20px;
   background: $light-color;
   border-radius: $border-big;
 
-  #back-arrow {
+  .back-arrow {
     position: absolute;
     padding: 15px;
     font-size: 40px;
@@ -14,7 +14,7 @@
     cursor: pointer;
   }
 
-  #next-button {
+  .next-button {
     display: block;
     padding: 5px 40px;
     background-color: $bg-color;

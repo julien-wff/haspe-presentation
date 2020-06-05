@@ -1,5 +1,5 @@
 import React, { MouseEvent, useContext, useEffect, useState } from 'react';
-import './StepIndicator.scss';
+import styles from './StepIndicator.module.scss';
 import { StudentRegisterContext } from '../../../pages/register/student';
 
 interface Props {
@@ -29,7 +29,7 @@ export default function StepIndicator({ stepCount }: Props) {
                     cx={x}
                     cy={y}
                     r={CIRCLE_RAD}
-                    className={i <= stepIndex ? 'completed' : ''}
+                    className={i <= stepIndex ? styles.completed : ''}
                     onClick={evt => handleFigureClick(evt, i)}
                     key={`circle-${i}`}
                 />,
@@ -44,7 +44,7 @@ export default function StepIndicator({ stepCount }: Props) {
                         y={y - height / 2}
                         height={height}
                         width={SVG_WIDTH / stepCount}
-                        className={i < stepIndex ? 'completed' : ''}
+                        className={i < stepIndex ? styles.completed : ''}
                         onClick={evt => handleFigureClick(evt, i + 1)}
                         key={`rect-${i}`}
                     />,
@@ -63,7 +63,7 @@ export default function StepIndicator({ stepCount }: Props) {
     }
 
     return (
-        <svg viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`} id="step-indicator">
+        <svg viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`} className={styles.stepIndicator}>
             {figures}
         </svg>
     );

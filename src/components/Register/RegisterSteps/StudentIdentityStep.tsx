@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useContext } from 'react';
-import './StudentIdentityStep.scss';
+import styles from './StudentIdentityStep.module.scss';
 import { StudentRegisterContext } from '../../../pages/register/student';
 import InputField from '../../Form/InputField';
 import { useTranslation } from 'react-i18next';
@@ -25,7 +25,7 @@ export default function StudentIdentityStep() {
     return (
         <>
             <h1>{t('who are you')}</h1>
-            <div id="student-identity-inputs">
+            <div className={styles.studentIdentityInputs}>
                 <InputField
                     type="text"
                     name="lastName"

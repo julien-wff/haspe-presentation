@@ -1,0 +1,8 @@
+@import "../../../styles/variables";
+
+.student-identity-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-height: 350px;
+}

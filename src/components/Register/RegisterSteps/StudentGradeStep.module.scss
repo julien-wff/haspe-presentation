@@ -1,0 +1,25 @@
+@import "../../../styles/variables";
+
+.student-grade-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.button {
+  display: inline-block;
+}
+
+.vertical-line {
+  height: 200px;
+  width: 1px;
+  background: black;
+  display: inline-block;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.container {
+  width: 200px;
+  margin-left: 20px;
+}
