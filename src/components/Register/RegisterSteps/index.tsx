@@ -1,7 +1,8 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useContext } from 'react';
 import './index.scss';
 import { useTranslation } from 'react-i18next';
 import { navigate } from '@reach/router';
+import { StudentRegisterContext } from '../../../pages/register/student';
 import Center from '../../Center';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,43 +13,29 @@ interface Props {
     pageName: string;
 }
 
-export default function RegisterSteps({ children: steps, pageName }: Props) {
-    const [stepIndex, setStepIndex] = useState(0);
+export default function RegisterSteps({ children: steps }: Props) {
+
+    const { userData: { step: stepIndex }, dispatchUserData } = useContext(StudentRegisterContext);
     const { t } = useTranslation();
-
-    // Read the saved index from the session storage
-    useEffect(() => {
-        const cacheStepIndex = sessionStorage.getItem(`step-${pageName}`);
-        const cacheStepIndexInt = parseInt(cacheStepIndex!);
-        if (cacheStepIndex && !isNaN(cacheStepIndexInt))
-            setStepIndex(cacheStepIndexInt);
-    }, []);
-
-    // Write the actual index into the session storage
-    useEffect(() => {
-        sessionStorage.setItem(`step-${pageName}`, stepIndex.toString());
-    }, [pageName, stepIndex]);
 
     // If only one step is specified then convert it to an array
     if (!Array.isArray(steps)) {
-        steps = [steps];
+        steps = [ steps ];
     }
     const stepCount = steps.length;
 
-    function handleStepChange(
-        mode: 'increase' | 'decrease',
-        event?: FormEvent,
-    ) {
+    function handleStepChange(mode: 'increase' | 'decrease', event?: FormEvent) {
         if (event) {
             event.preventDefault();
         }
         if (mode === 'increase' && stepIndex < stepCount - 1) {
-            setStepIndex(prevState => prevState + 1);
+            dispatchUserData({ type: 'INCREASE_STEP' });
         }
         if (mode === 'decrease') {
-            if (stepIndex > 0) setStepIndex(prevState => prevState - 1);
+            if (stepIndex > 0) dispatchUserData({ type: 'DECREASE_STEP' });
             else navigate(-1);
         }
+        dispatchUserData({ type: 'WRITE_CHANGES' });
     }
 
     return (
@@ -60,11 +47,7 @@ export default function RegisterSteps({ children: steps, pageName }: Props) {
                     onClick={() => handleStepChange('decrease')}
                 />
 
-                <StepIndicator
-                    stepIndex={stepIndex}
-                    stepCount={stepCount}
-                    setStepIndex={setStepIndex}
-                />
+                <StepIndicator stepCount={stepCount}/>
 
                 <form onSubmit={evt => handleStepChange('increase', evt)}>
                     {steps[stepIndex]}

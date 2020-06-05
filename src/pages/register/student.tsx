@@ -1,80 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import RegisterNavBar from '../../components/Register/RegisterNavBar';
 import RegisterSteps from '../../components/Register/RegisterSteps';
 import StudentIdentityStep from '../../components/Register/RegisterSteps/StudentIdentityStep';
 import StudentGradeStep from '../../components/Register/RegisterSteps/StudentGradeStep';
-import {
-    StudentData,
-    StudentDataKeys,
-} from '../../components/Register/RegisterSteps/Step';
+import { StudentData } from '../../components/Register/RegisterSteps/Step';
+import { initialState, reducer, RegisterActions } from '../../modules/reducers/student-register';
 
-const STORAGE_KEY = 'student-register-data';
+export const StudentRegisterContext = React.createContext<{ userData: StudentData, dispatchUserData: React.Dispatch<RegisterActions> }>({} as any);
 
 function StudentRegisterPage() {
-    let defaultValue: StudentData = {
-        identity: {
-            lastName: '',
-            firstName: '',
-            birthDate: '',
-            city: '',
-            country: '',
-            institution: '',
-        },
-        grade: {
-            elemantarySchool: '',
-            college: '',
-            highSchool: '',
-            university: '',
-        },
-    };
-    const [userData, setUserData] = useState(defaultValue);
+
+    const [ userData, dispatch ] = useReducer(reducer, initialState);
 
     // Loading value if stored in cache
     useEffect(() => {
-        const cacheData = sessionStorage.getItem(STORAGE_KEY);
-        if (cacheData) {
-            try {
-                const parsedCacheData = JSON.parse(cacheData);
-                if (typeof parsedCacheData === 'object')
-                    setUserData(parsedCacheData);
-            } catch {}
-        }
+        dispatch({ type: 'LOAD_FROM_CACHE' });
     }, []);
-
-    function handleStepValueChange(
-        stepName: StudentDataKeys,
-        key: string,
-        value: any,
-    ) {
-        setUserData(prevState => ({
-            ...prevState,
-            [stepName]: {
-                ...prevState[stepName],
-                [key]: value,
-            },
-        }));
-    }
-
-    function writeChanges() {
-        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
-    }
 
     return (
         <>
-            <RegisterNavBar />
+            <RegisterNavBar/>
 
-            <RegisterSteps pageName="register">
-                <StudentIdentityStep
-                    changeValue={handleStepValueChange}
-                    values={userData.identity}
-                    writeChanges={writeChanges}
-                />
-                <StudentGradeStep
-                    changeValue={handleStepValueChange}
-                    values={userData.grade}
-                    writeChanges={writeChanges}
-                />
-            </RegisterSteps>
+            <StudentRegisterContext.Provider value={{ userData, dispatchUserData: dispatch }}>
+
+                <RegisterSteps pageName="register">
+                    <StudentIdentityStep/>
+                    <StudentGradeStep/>
+                </RegisterSteps>
+
+            </StudentRegisterContext.Provider>
         </>
     );
 }

@@ -1,22 +1,21 @@
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { MouseEvent, useContext, useEffect, useState } from 'react';
 import './StepIndicator.scss';
+import { StudentRegisterContext } from '../../../pages/register/student';
 
 interface Props {
-    stepIndex: number;
     stepCount: number;
-    setStepIndex: (step: number) => void;
 }
 
 const SVG_WIDTH = 1000;
 const SVG_HEIGHT = 100;
 const CIRCLE_RAD = 30;
 
-export default function StepIndicator({
-    stepIndex,
-    stepCount,
-    setStepIndex,
-}: Props) {
-    const [figures, setFigures] = useState([] as JSX.Element[]);
+
+export default function StepIndicator({ stepCount }: Props) {
+
+    const { userData: { step: stepIndex }, dispatchUserData } = useContext(StudentRegisterContext);
+    const [ figures, setFigures ] = useState([] as JSX.Element[]);
+
     useEffect(() => {
         // Generate figures
         let circles: JSX.Element[] = [],
@@ -54,12 +53,12 @@ export default function StepIndicator({
         }
 
         // Put the rectangles first, then the circles
-        setFigures([...rects, ...circles]);
-    }, [stepIndex, stepCount]);
+        setFigures([ ...rects, ...circles ]);
+    }, [ stepIndex, stepCount ]);
 
     function handleFigureClick(evt: MouseEvent<SVGGElement>, index: number) {
         if ((evt.target as SVGGElement).classList.contains('completed')) {
-            setStepIndex(index);
+            dispatchUserData({ type: 'SET_STEP', payload: index });
         }
     }
 

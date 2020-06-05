@@ -14,6 +14,7 @@ export type StudentDataKeys = 'identity' | 'grade';
 export interface StudentData {
     identity: StudentIdentityData;
     grade: StudentGradeData;
+    step: number;
 }
 
 export interface StudentIdentityData {
