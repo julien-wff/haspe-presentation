@@ -19,9 +19,9 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 type ErrorType = 'wrong email' | false;
 
 function InputField(props: Props) {
-    const [inputValue, setInputValue] = useState((props.value || '') as string);
-    const [errorMsg, setErrorMsg] = useState<ErrorType>(false);
-    const [uuid] = useState(Math.random().toString().slice(2, 7));
+    const [ inputValue, setInputValue ] = useState((props.value || '') as string);
+    const [ errorMsg, setErrorMsg ] = useState<ErrorType>(false);
+    const [ uuid ] = useState(Math.random().toString().slice(2, 7));
     const { t } = useTranslation();
 
     let id = props.id || `${props.type}-${uuid}`,
@@ -38,10 +38,11 @@ function InputField(props: Props) {
         props.onChange(event);
     }
 
-    function handleErrorChecking() {
+    function handleErrorChecking(evt: React.FocusEvent<HTMLInputElement>) {
         if (type === 'email' && inputValue && !inputValue.match(emailRegex))
             setErrorMsg('wrong email');
         else setErrorMsg(false);
+        props.onBlur?.(evt);
     }
 
     return (
