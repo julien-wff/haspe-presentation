@@ -8,7 +8,7 @@ import React, {
     useState,
 } from 'react';
 import { useWindowWidth } from '../../hooks/window';
-import { bpPhone } from '../../styles/breakpoints';
+import { bpPhone } from '../../modules/constants';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
