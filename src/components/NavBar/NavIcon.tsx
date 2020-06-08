@@ -32,7 +32,6 @@ function NavIcon({ name, mobileVisible = false, float = 'left', href }: Props) {
             <img
                 src={logoHaspe}
                 alt={`logo ${name}`}
-                id="nav-icon"
                 className={cssClasses}
             />
         );

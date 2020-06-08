@@ -2,8 +2,8 @@
 
 .nav-icon {
   display: inline-block;
-  margin: 10px;
-  height: $nav-height-pc - 20px;
+  margin-left: 10px;
+  height: $nav-height-pc;
 
   &.float-right {
     float: right;
@@ -14,7 +14,7 @@
   }
 
   & > img {
-    height: $nav-height-pc - 20px;
+    height: $nav-height-pc;
   }
 
   @media all and (max-width: $bp-tablet) {
