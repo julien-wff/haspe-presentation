@@ -1,25 +1,24 @@
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { usePageContext } from '../PageContext';
 import styles from './LanguageTile.module.scss';
 
 interface Props {
-    onClick: (code: string, event: MouseEvent<HTMLDivElement>) => void;
     code: string;
     original: string;
 }
 
-function LanguageTile({ onClick, code, original }: Props) {
+function LanguageTile({ code, original }: Props) {
     const { t } = useTranslation();
+    const { lang } = usePageContext();
 
-    function handleTileClick(event: MouseEvent<HTMLDivElement>) {
-        onClick(code, event);
-    }
+    const redirectURL = window.location.pathname.replace(`/${lang}/`, `/${code}/`);
 
     return (
-        <div onClick={handleTileClick} className={styles.languageTile}>
+        <a className={styles.languageTile} href={redirectURL} aria-label={`Change language to ${code}`}>
             <h5>{t(`languages list.${code}`)}</h5>
             <h4>{original}</h4>
-        </div>
+        </a>
     );
 }
 

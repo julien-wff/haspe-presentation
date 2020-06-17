@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
@@ -21,18 +21,13 @@ interface Props {
 }
 
 function ChangeLanguage({ expanded, setExpanded }: Props) {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const cssClasses = classNames(
         styles.container,
         {
             [styles.invisible]: !expanded,
         });
-
-    async function handleLanguageTileClick(code: string) {
-        await i18n.changeLanguage(code);
-        setExpanded(false);
-    }
 
     return (
         <div className={cssClasses}>
@@ -48,7 +43,6 @@ function ChangeLanguage({ expanded, setExpanded }: Props) {
                     <div className={styles.languagesContainer}>
                         {languages.map(lang => (
                             <LanguageTile
-                                onClick={handleLanguageTileClick}
                                 code={lang.code}
                                 original={lang.original}
                                 key={lang.code}
