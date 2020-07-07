@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContext } from '../PageContext';
 import styles from './LanguageTile.module.scss';
+import { useLocation } from '@reach/router';
 
 interface Props {
     code: string;
@@ -11,8 +12,9 @@ interface Props {
 function LanguageTile({ code, original }: Props) {
     const { t } = useTranslation();
     const { lang } = usePageContext();
+    const location = useLocation();
 
-    const redirectURL = window.location.pathname.replace(`/${lang}/`, `/${code}/`);
+    const redirectURL = location.pathname.replace(`/${lang}/`, `/${code}/`);
 
     return (
         <a className={styles.languageTile} href={redirectURL} aria-label={`Change language to ${code}`}>
