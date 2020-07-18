@@ -28,25 +28,14 @@
   }
 
   @media all and (max-width: $bp-phone) { // On smartphone
-    flex-wrap: wrap;
-    height: auto;
-    border-radius: 10px 10px 0 0;
-    bottom: 0;
-    top: calc(100vh - #{$nav-height-phone});
-    transition: .3s;
+    height: $nav-height-phone;
 
-    & .menu-bar {
-      display: block;
-      width: 100%;
-      height: $nav-height-phone;
-      line-height: $nav-height-phone;
-      text-align: center;
-      font-size: $nav-height-phone / 3 * 2;
-      cursor: pointer;
+    & div, & div div, & div a {
+      height: $nav-height-phone - 10px;
+    }
 
       svg {
         padding-right: 5px;
       }
-    }
   }
 }

@@ -54,4 +54,13 @@
       padding: 0 10px;
     }
   }
+
+  @media all and (max-width: $bp-phone) {
+    &, & div, & a {
+      font-size: 14px;
+    }
+    & svg {
+      font-size: 20px;
+    }
+  }
 }
